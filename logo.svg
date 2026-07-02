@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 96" role="img" aria-label="KI Material-Baukasten">
+  <g>
+    <path d="M28 12 H12 V84 H28" fill="none" stroke="#0B1F3F" stroke-width="7" stroke-linecap="round"/>
+    <path d="M64 12 H80 V84 H64" fill="none" stroke="#0B1F3F" stroke-width="7" stroke-linecap="round"/>
+    <rect x="30" y="56" width="15" height="15" rx="3" fill="#0EA5C8"/>
+    <rect x="47" y="56" width="15" height="15" rx="3" fill="#1B7A4A"/>
+    <rect x="38.5" y="39" width="15" height="15" rx="3" fill="#D97757"/>
+    <path d="M84 10 l2.8 7.2 7.2 2.8 -7.2 2.8 -2.8 7.2 -2.8 -7.2 -7.2 -2.8 7.2 -2.8 z" fill="#0EA5C8"/>
+  </g>
+  <text x="104" y="62" font-family="Outfit, Avenir Next, Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="38" letter-spacing="0.5" fill="#0B1F3F">KI Material-Baukasten</text>
+</svg>
