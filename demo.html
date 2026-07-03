@@ -94,11 +94,41 @@ footer{padding:28px 0;background:#fff}
 .foot .links{display:flex;gap:20px}
 .foot a{color:var(--ink-soft);text-decoration:none}
 
+.feats{background:#fff;border-top:1px solid var(--line);padding:64px 0}
+.feats h2,.vs h2{font-size:clamp(26px,3.2vw,36px);font-weight:800;letter-spacing:-.02em;text-align:center;line-height:1.15}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 34px;max-width:860px;margin:34px auto 0}
+.feat{display:flex;align-items:flex-start;gap:11px;font-size:16px}
+.feat svg{flex-shrink:0;margin-top:4px}
+.vs{padding:64px 0}
+.vs .lede{text-align:center;color:var(--ink-soft);max-width:60ch;margin:14px auto 0;font-size:17px}
+.vs table{width:100%;border-collapse:collapse;margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.vs th,.vs td{padding:15px 18px;text-align:left;font-size:15px}
+.vs thead th{background:var(--navy);color:#fff;font-weight:600;font-size:14.5px}
+.vs tbody tr+tr td{border-top:1px solid var(--line)}
+.vs td:first-child{font-weight:600;width:44%}
+.yes{color:var(--green);font-weight:700}
+.no{color:rgba(11,31,63,.5)}
+.vs .note{font-size:13px;color:var(--ink-soft);margin-top:12px}
+.cta-mid{text-align:center;margin-top:40px}
+
 .cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease;display:none}
 .cta-bar .btn{width:100%;justify-content:center}
 .cta-bar.show{transform:none}
 
 @media (prefers-reduced-motion: reduce){.btn,.toast,.cta-bar{transition:none}}
+@media (max-width:700px){
+  .feat-grid{grid-template-columns:1fr}
+  .vs table,.vs tbody,.vs tr,.vs td{display:block;width:100%}
+  .vs thead{display:none}
+  .vs table{border:none;background:transparent;overflow:visible}
+  .vs tr{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:12px;padding:8px 0}
+  .vs tbody tr+tr td{border-top:none}
+  .vs td{padding:5px 18px}
+  .vs td:first-child{width:auto;padding-top:14px;font-size:16px}
+  .vs td:last-child{padding-bottom:14px}
+  .vs td:nth-child(2)::before{content:"Material-Baukasten: ";font-weight:600;color:var(--navy)}
+  .vs td:nth-child(3)::before{content:"Worksheet Crafter: ";font-weight:600;color:var(--navy)}
+}
 @media (max-width:900px){
   .tool-side,.tool-right{display:none}
   .tool-body{flex-direction:column;min-height:0}
@@ -188,12 +218,52 @@ footer{padding:28px 0;background:#fff}
 <section class="after-tool">
   <p><b>Gefällt dir, was du siehst?</b> Im kostenlosen Test ist alles offen: der volle KI-Assistent, über 300 Bausteine, KI-Bilder, Vorlesen, Drucken mit Lösungsblatt und der Tablet-Modus für deine Klasse.</p>
   <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span>→</span></a>
-  <p class="cta-help">130+ KI-Tools von KI Schulgenie inklusive. Jederzeit kündbar.</p>
+  <p class="cta-help">130+ weitere KI-Tools inklusive. Jederzeit kündbar.</p>
+</section>
+
+<section class="feats">
+  <div class="wrap">
+    <h2>Was im vollen Baukasten steckt</h2>
+    <div class="feat-grid">
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Die KI baut dir ganze Blätter, auch per Mikrofon oder aus deinem eigenen PDF</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Über 300 Bausteine in 10 Fächern, am tiefsten ausgebaut in Mathe und Deutsch</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Differenzierung auf Klick: leicht, mittel und schwer</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Punkte und Note automatisch, mit den Skalen für DE, AT und CH</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Echte Schulschriften und Lineaturen für Klasse 1 bis 4</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>KI-Bilder, Vorlesen und Audio, beim gedruckten Blatt per QR-Code</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Mitmach-Modus fürs Tablet, mit Selbstkontrolle, Sternen und Konfetti</div>
+      <div class="feat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Whiteboard-Modus mit Klassen-Timer und Zufalls-Schüler:in</div>
+    </div>
+  </div>
+</section>
+
+<section class="vs">
+  <div class="wrap">
+    <h2>Der Unterschied zu Worksheet Crafter</h2>
+    <p class="lede">Worksheet Crafter ist ein gutes Programm, wenn du gern alles selbst gestaltest. Der KI-Material-Baukasten nimmt dir das Bauen ab.</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th></th><th>KI Material-Baukasten</th><th>Worksheet Crafter</th></tr></thead>
+      <tbody>
+        <tr><td>Ganzes Arbeitsblatt aus einem Satz</td><td class="yes">✓ KI-Assistent</td><td class="no">nein, bewusst ohne KI</td></tr>
+        <tr><td>Sofort loslegen, nichts installieren</td><td class="yes">✓ am Schul-PC, Laptop und Tablet</td><td class="no">Programm muss installiert werden</td></tr>
+        <tr><td>Drei Niveaustufen erzeugen</td><td class="yes">✓ ein Klick</td><td class="no">manuell, drei Mal bauen</td></tr>
+        <tr><td>Klasse arbeitet am Tablet und an der Tafel mit</td><td class="yes">✓ ganz ohne extra App</td><td class="no">nur mit extra App</td></tr>
+        <tr><td>KI-Bilder, Vorlesen und Geräusche</td><td class="yes">✓ von der KI erzeugt</td><td class="no">nur einfache Sounds, ohne KI</td></tr>
+        <tr><td>Fertige Blätter zum Übernehmen</td><td class="yes">✓ Materialbörse</td><td class="yes">✓ Tauschbörse</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Vergleich auf Basis öffentlich verfügbarer Angaben. Worksheet Crafter ist eine Marke der Tools for Schools GmbH und steht in keiner Verbindung zum KI-Material-Baukasten.</p>
+    <div class="cta-mid">
+      <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span>→</span></a>
+      <p class="cta-help">Am besten parallel testen und selbst vergleichen.</p>
+    </div>
+  </div>
 </section>
 
 <div class="trust">
   <div class="trust-in">
-    <div><span class="k">65.000+</span> Lehrkräfte bei KI Schulgenie</div>
     <div><span class="k">★ 4,9</span> Bewertung der Plattform</div>
     <div><span class="k">Klasse 1 bis 4</span> gemacht für die Grundschule</div>
     <div><span class="k">DSGVO</span> Server in der EU</div>
@@ -203,7 +273,6 @@ footer{padding:28px 0;background:#fff}
 <footer>
   <div class="wrap foot">
     <img src="logo.svg" alt="KI Material-Baukasten">
-    <span>Ein Produkt von <a href="https://kischulgenie.com">KI Schulgenie</a></span>
     <span class="links"><a href="https://kischulgenie.com/impressum">Impressum</a><a href="https://kischulgenie.com/datenschutz">Datenschutz</a></span>
   </div>
 </footer>
