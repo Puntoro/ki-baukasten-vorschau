@@ -91,7 +91,7 @@ h1 em{font-style:normal;color:var(--teal-ink)}
 .shots{background:var(--bg-soft)}
 .shot-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
 .shot-grid figure{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
-.shot-grid figure:first-child{grid-column:span 2}
+.shot-grid figure:first-child,.shot-grid figure:last-child{grid-column:span 2}
 .frame{display:flex;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
 .frame span{width:10px;height:10px;border-radius:50%;background:rgba(11,31,63,.15)}
 .shot-grid img{width:100%;display:block}
@@ -265,7 +265,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   .tabs{gap:6px}
   .tabs button{padding:10px 16px;font-size:14.5px}
   .shot-grid{grid-template-columns:1fr}
-  .shot-grid figure:first-child{grid-column:span 1}
+  .shot-grid figure:first-child,.shot-grid figure:last-child{grid-column:span 1}
   .chip-a{right:0}
   .chip-b{left:0;bottom:46px}
 }
@@ -510,8 +510,13 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="shot-grid">
       <figure class="reveal">
         <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
-        <img src="shot-04-mathe-arbeitsblatt.png" alt="Der Baukasten-Editor mit einem fertigen Mathe-Arbeitsblatt: Zahlenmauer und Rechenpäckchen, Lösungen in Blau" loading="lazy">
-        <figcaption>Ein fertiges Mathe-Blatt im Editor: Lösungen blendest du mit einem Klick ein und aus.</figcaption>
+        <img src="shot-17-blumen-blatt.png" alt="Der Baukasten-Editor mit einem kompletten Mathe-Blatt auf Blumen-Design: Zahlenmauer und Rechenmalblatt" loading="lazy">
+        <figcaption>Ein komplettes Blatt mit Blumen-Design: Zahlenmauer, Rechenmalblatt, und rechts die Hintergrund-Motive zur Wahl.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
+        <img src="shot-07-buchstaben-blatt.png" alt="Ein fertiges Buchstaben-Lernblatt mit Bildern, Nachfahr-Buchstaben und Schreib-Kästchen" loading="lazy">
+        <figcaption>Deutsch, Klasse 1: Buchstaben-Lernblatt mit Bildern, Nachfahren und Schreib-Kästchen.</figcaption>
       </figure>
       <figure class="reveal">
         <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
