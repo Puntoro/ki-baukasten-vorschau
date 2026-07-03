@@ -52,7 +52,7 @@ h1 em{font-style:normal;color:var(--teal-ink)}
 .prompt .caret{display:inline-block;width:2px;height:18px;background:#7FDCEF;margin-left:2px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .sheet{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 24px 60px rgba(11,31,63,.14);padding:34px 26px 24px;transform:rotate(1.5deg);position:relative;min-height:360px}
-.sheet-back{position:absolute;inset:34px -8px -14px 22px;background:#fff;border:1px solid var(--line);border-radius:6px;transform:rotate(-2.5deg);z-index:-1}
+.sheet-back{position:absolute;inset:112px -9px -14px 26px;background:#fff;border:1px solid var(--line);border-radius:6px;transform:rotate(-2deg);z-index:-1}
 .sheet-head{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);border-bottom:1.5px solid var(--line);padding-bottom:8px;margin-bottom:14px}
 .sheet h3{font-size:19px;margin-bottom:2px}
 .sheet .topic{font-size:12.5px;color:var(--teal-ink);font-weight:600;margin-bottom:14px}
@@ -81,10 +81,21 @@ h1 em{font-style:normal;color:var(--teal-ink)}
 .img-box img{width:82%;height:82%;object-fit:contain}
 .ki-tag{position:absolute;bottom:-11px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:10.5px;font-weight:600;color:var(--teal-ink);white-space:nowrap}
 .wave{display:flex;align-items:center;gap:12px;margin-top:16px}
-.play{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.play{width:38px;height:38px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.play:hover{background:#122d57;transform:scale(1.06)}
 .bars{display:flex;align-items:center;gap:4px;height:34px}
-.bars b{width:5px;border-radius:3px;background:var(--teal);height:30%;animation:wv 0.9s ease-in-out infinite alternate;animation-delay:calc(var(--i)*.13s)}
+.bars b{width:5px;border-radius:3px;background:var(--teal);height:calc(20% + var(--i)*8%)}
+.bars.speaking b{animation:wv .9s ease-in-out infinite alternate;animation-delay:calc(var(--i)*.13s)}
 @keyframes wv{from{height:22%}to{height:95%}}
+.wave-hint{font-size:13px;color:var(--ink-soft)}
+.shots{background:var(--bg-soft)}
+.shot-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.shot-grid figure{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0}
+.shot-grid figure:first-child{grid-column:span 2}
+.frame{display:flex;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.frame span{width:10px;height:10px;border-radius:50%;background:rgba(11,31,63,.15)}
+.shot-grid img{width:100%;display:block}
+.shot-grid figcaption{padding:12px 16px;font-size:14px;color:var(--ink-soft)}
 .cell .igel-mini{float:right;width:74px;margin:0 0 6px 12px}
 .fields{flex:1}
 .frow{font-size:14.5px;line-height:2.1}
@@ -151,14 +162,17 @@ h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-.02em;line-h
 .selfbuild{background:var(--navy);color:#fff}
 .selfbuild h2{color:#fff}
 .selfbuild .lede{color:rgba(255,255,255,.75)}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:40px 0 26px}
-.tabs button{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:999px;padding:10px 22px;font:600 15.5px 'Outfit',sans-serif;cursor:pointer;transition:background .18s,color .18s}
-.tabs button:hover{background:rgba(255,255,255,.1)}
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:40px 0 22px}
+.tabs button{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;border-radius:999px;padding:13px 24px;font:600 16.5px 'Outfit',sans-serif;cursor:pointer;transition:background .18s,color .18s,transform .18s}
+.tabs button:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .tabs button.on{background:var(--teal);border-color:var(--teal);color:#06222b}
-.panel{display:none;max-width:880px;margin:0 auto}
-.panel.on{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.panel span{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);border-radius:999px;padding:9px 18px;font-size:15px;font-weight:600;opacity:0;transform:scale(.85);animation:pop .35s ease forwards;animation-delay:calc(var(--i)*.04s)}
-.panel span.ki{background:rgba(14,165,200,.25);border-color:rgba(127,220,239,.5)}
+.panelbox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px;max-width:900px;margin:0 auto}
+.panel-label{text-align:center;font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:16px}
+.panel-label b{color:#7FDCEF}
+.panel{display:none}
+.panel.on{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+.panel span{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 16px;font-size:14.5px;font-weight:400;color:rgba(255,255,255,.92);opacity:0;transform:scale(.85);animation:pop .35s ease forwards;animation-delay:calc(var(--i)*.04s)}
+.panel span.ki{background:rgba(14,165,200,.22);border-color:rgba(127,220,239,.45)}
 @keyframes pop{to{opacity:1;transform:scale(1)}}
 .selfbuild .hint{text-align:center;font-size:14.5px;color:rgba(255,255,255,.6);margin-top:26px}
 .selfbuild .hint b{color:#7FDCEF}
@@ -207,7 +221,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   .panel span{animation:none;opacity:1;transform:none}
   .btn,.cell{transition:none}
   .prompt .caret{animation:none}
-  .bars b{animation:none;height:calc(28% + var(--i)*9%)}
+  .bars b,.bars.speaking b{animation:none;height:calc(28% + var(--i)*9%)}
 }
 @media (max-width:700px){
   .vs table,.vs tbody,.vs tr,.vs td{display:block;width:100%}
@@ -231,7 +245,9 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   .step{grid-template-columns:1fr;gap:8px;padding:24px 0}
   section{padding:64px 0}
   .tabs{gap:6px}
-  .tabs button{padding:9px 16px;font-size:14.5px}
+  .tabs button{padding:10px 16px;font-size:14.5px}
+  .shot-grid{grid-template-columns:1fr}
+  .shot-grid figure:first-child{grid-column:span 1}
   .chip-a{right:0}
   .chip-b{left:0;bottom:46px}
 }
@@ -251,7 +267,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div>
       <span class="eyebrow">Der KI-Arbeitsblatt-Baukasten für die Grundschule</span>
       <h1>Dein nächstes Arbeitsblatt <em>baut sich selbst.</em></h1>
-      <p class="sub">Tipp deinen Wunsch ein, die KI baut fertiges Material für Klasse 1 bis 4. Differenziert in drei Stufen, gedruckt oder aufs Tablet.</p>
+      <p class="sub">Tipp deinen Wunsch ein, die KI baut fertiges Material für Klasse 1 bis 4. Oder du baust selbst, Baustein für Baustein. Differenziert in drei Stufen, gedruckt oder aufs Tablet.</p>
       <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span class="arr">→</span></a>
       <p class="cta-help">130+ KI-Tools von KI Schulgenie inklusive. Jederzeit kündbar.</p>
     </div>
@@ -265,7 +281,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 
         <div class="sheet-body on" data-v>
           <h3 class="blk" style="--i:0">Rechnen mit Zehnerübergang</h3>
-          <p class="topic blk" style="--i:0">Klasse 2 · Thema Bauernhof</p>
+          <p class="topic blk" style="--i:0">Klasse 2 · Mathe</p>
           <div class="calc-grid blk" style="--i:1">
             <span>27 + 5 = <i class="boxi"></i></span>
             <span>48 + 6 = <i class="boxi"></i></span>
@@ -280,36 +296,36 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
         </div>
 
         <div class="sheet-body" data-v>
-          <h3 class="blk" style="--i:0">Das Eichhörnchen</h3>
+          <h3 class="blk" style="--i:0">Der Wasserkreislauf</h3>
           <p class="topic blk" style="--i:0">Klasse 3 · Lückentext</p>
-          <div class="gap-line blk" style="--i:1">Das Eichhörnchen sammelt im Herbst <span class="gap"></span> für den Winter. Sein Nest heißt <span class="gap"></span>. Mit dem buschigen <span class="gap"></span> hält es die Balance.</div>
-          <div class="bank blk" style="--i:2"><span>Kobel</span><span>Nüsse</span><span>Schwanz</span></div>
+          <div class="gap-line blk" style="--i:1">Die Sonne erwärmt das Wasser, es steigt als <span class="gap"></span> auf. Daraus entstehen am Himmel <span class="gap"></span>. Fällt das Wasser als <span class="gap"></span> zurück, beginnt alles von vorn.</div>
+          <div class="bank blk" style="--i:2"><span>Wolken</span><span>Regen</span><span>Wasserdampf</span></div>
         </div>
 
         <div class="sheet-body" data-v>
-          <h3 class="blk" style="--i:0">Tiere im Wald</h3>
+          <h3 class="blk" style="--i:0">Das Weltall</h3>
           <p class="topic blk" style="--i:0">Klasse 1 · Kreuzworträtsel</p>
           <div class="cross blk" style="--i:1">
-            <i class="b"></i><i class="b"></i><i class="t">F</i><i></i><i></i><i></i><i class="b"></i>
-            <i class="t">I</i><i></i><i>G</i><i></i><i class="b"></i><i class="b"></i><i class="b"></i>
-            <i class="b"></i><i class="b"></i><i>E</i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i>
-            <i class="b"></i><i class="t">H</i><i></i><i></i><i></i><i></i><i class="b"></i>
+            <i class="b"></i><i class="b"></i><i class="t">S</i><i></i><i></i><i></i><i></i>
+            <i class="t">M</i><i></i><i>N</i><i></i><i class="b"></i><i class="b"></i><i class="b"></i>
+            <i class="b"></i><i class="b"></i><i>D</i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i>
+            <i class="t">R</i><i></i><i></i><i></i><i></i><i></i><i class="b"></i>
           </div>
-          <p class="quest blk" style="--i:2">1. Schläft im Bau unter der Erde. → 2. Hat Stacheln. →</p>
+          <p class="quest blk" style="--i:2">1. Siehst du nachts am Himmel. → 2. Fliegt ins Weltall. →</p>
         </div>
 
         <div class="sheet-body" data-v>
-          <h3 class="blk" style="--i:0">Steckbrief: Der Igel</h3>
+          <h3 class="blk" style="--i:0">Steckbrief: Die Feuerwehr</h3>
           <p class="topic blk" style="--i:0">Klasse 2 · Sachunterricht</p>
           <div class="steck blk" style="--i:1">
-            <div class="img-box"><img src="igel-sw.png" alt=""><span class="ki-tag">✦ KI-Ausmalbild</span></div>
+            <div class="img-box"><img src="feuerwehr-sw.png" alt=""><span class="ki-tag">✦ KI-Ausmalbild</span></div>
             <div class="fields">
-              <div class="frow">Name: <span class="gap"></span></div>
-              <div class="frow">Nahrung: <span class="gap"></span></div>
-              <div class="frow">Winterschlaf: <span class="gap"></span></div>
+              <div class="frow">Notruf: <span class="gap"></span></div>
+              <div class="frow">Fahrzeug: <span class="gap"></span></div>
+              <div class="frow">Aufgaben: <span class="gap"></span></div>
             </div>
           </div>
-          <p class="quest blk" style="--i:2">Male den Igel aus und fülle den Steckbrief aus.</p>
+          <p class="quest blk" style="--i:2">Male das Feuerwehrauto aus und fülle den Steckbrief aus.</p>
         </div>
 
         <div class="sheet-body" data-v>
@@ -324,12 +340,12 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
         </div>
 
         <div class="sheet-body" data-v>
-          <h3 class="blk" style="--i:0">On the farm</h3>
+          <h3 class="blk" style="--i:0">My body</h3>
           <p class="topic blk" style="--i:0">Klasse 3 · Englisch</p>
           <div class="match blk" style="--i:1">
-            <span>cow</span><span>das Pferd</span>
-            <span>pig</span><span>die Kuh</span>
-            <span>horse</span><span>das Schwein</span>
+            <span>head</span><span>der Fuß</span>
+            <span>hand</span><span>der Kopf</span>
+            <span>foot</span><span>die Hand</span>
             <svg aria-hidden="true"><line x1="46%" y1="15%" x2="54%" y2="50%" stroke="#0EA5C8" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/></svg>
           </div>
           <p class="quest blk" style="--i:2">Verbinde die Wörter. Ein Beispiel ist schon gelöst.</p>
@@ -372,7 +388,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 <section class="pain center">
   <div class="wrap reveal">
     <h2>Sonntag, 21:30 Uhr.<br>Du bastelst immer noch.</h2>
-    <p class="lede">Mathe, Deutsch und Sachunterricht für morgen. Das Internet liefert Material von 2009, die Kopiervorlage ist grau, und die schöne Eigenbau-Version scheitert an Word. <strong>Nicht weil du faul bist.</strong> Sondern weil Arbeitsblätter bauen bisher Handarbeit war.</p>
+    <p class="lede">Mathe, Deutsch und Sachunterricht für morgen. Das Internet liefert Material von 2009, die Kopiervorlage ist grau und die schöne Eigenbau-Version scheitert an Word. <strong>Nicht weil du faul bist.</strong> Sondern weil Arbeitsblätter bauen bisher Handarbeit war.</p>
     <p class="pivot">Ab jetzt nicht mehr.</p>
     <div class="stats">
       <div class="stat"><b>40 Min → 40 Sek</b><span>vom leeren Blatt zum fertigen Material</span></div>
@@ -391,7 +407,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="bento">
       <div class="cell c-hero reveal">
         <h3>Die KI baut dein Blatt. Komplett.</h3>
-        <p>Thema, Klasse, Wunsch eintippen. Der Assistent wählt passende Aufgaben, Bilder und Rätsel aus und stellt daraus ein fertiges Arbeitsblatt zusammen. Jede Aufgabe kannst du einzeln neu würfeln.</p>
+        <p>Thema, Klasse, Wunsch eintippen, oder einfach ins Mikrofon sprechen. Der Assistent wählt passende Aufgaben, Bilder und Rätsel aus und stellt daraus ein fertiges Arbeitsblatt zusammen. Auch aus deinem eigenen Material: Lade einen Text oder ein PDF hoch, die KI baut Aufgaben daraus.</p>
         <div class="wish">„<b>Sachaufgaben zum Zehnerübergang, Klasse 2, Thema Bauernhof</b>" → Blatt fertig. Mit Lösungsblatt.</div>
       </div>
       <div class="cell c-2 reveal">
@@ -406,18 +422,18 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       </div>
       <div class="cell c-3 reveal">
         <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></div>
-        <h3>Über 150 Bausteine</h3>
-        <p>Rechenpäckchen, Zahlenmauern, Lückentexte, Schwungübungen, Steckbriefe, Kreuzworträtsel, Noten, Landkarten und mehr. Für alle Grundschul-Fächer.</p>
+        <h3>Über 300 Bausteine, 10 Fächer</h3>
+        <p>Rechenpäckchen, Zahlenmauern, Lückentexte, Schwungübungen, Steckbriefe, Kreuzworträtsel, Noten, Landkarten und mehr. Am tiefsten ausgebaut: Mathe und Deutsch.</p>
       </div>
       <div class="cell c-3 tint-teal reveal">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2.5"/><path d="M9 18h6"/></svg></div>
         <h3>Mitmach-Modus fürs Tablet</h3>
-        <p>Deine Klasse löst das Blatt direkt am Bildschirm. Mit Selbstkontrolle, Sternen und Konfetti bei richtiger Lösung. Ganz ohne extra App.</p>
+        <p>Deine Klasse löst das Blatt direkt am Bildschirm. Die Schüler:innen kontrollieren sich selbst und bekommen bei richtiger Lösung Sterne und Konfetti. Ganz ohne extra App.</p>
       </div>
       <div class="cell c-3 reveal">
-        <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 10h8M12 16v3M8 21h8"/></svg></div>
         <h3>Whiteboard-Modus für den Unterricht</h3>
-        <p>Blatt an die Tafel, Klassen-Timer starten, Zufalls-Schüler ziehen, eine Aufgabe groß nach vorn holen, Lösungen Schritt für Schritt aufdecken.</p>
+        <p>Blatt an die Tafel, Klassen-Timer starten, Zufalls-Schüler:in ziehen, eine Aufgabe groß nach vorn holen, Lösungen Schritt für Schritt aufdecken.</p>
       </div>
       <div class="cell c-3 tint-green reveal">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -425,20 +441,66 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
         <p>Daten in der EU, keine Schülerkonten nötig. Der Baukasten kennt dein Land: aus Januar wird Jänner, aus Euro werden Franken, aus ß wird ss.</p>
       </div>
       <div class="cell c-3 reveal" style="background:#FDF1EC">
-        <img class="igel-mini" src="igel.png" alt="Von der KI gezeichneter Igel im Kinderbuch-Stil">
+        <img class="igel-mini" src="rakete.png" alt="Von der KI gezeichnete Rakete im Kinderbuch-Stil">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2"/><path d="M3 17l5-4 4 3 5-5 4 4"/></svg></div>
         <h3>KI-Bilder direkt aufs Blatt</h3>
-        <p>Cliparts, Ausmalbilder und Deko-Girlanden im kindgerechten Stil, zu jedem Thema. Der Igel hier? Hat die KI gezeichnet.</p>
+        <p>Cliparts, Ausmalbilder und Deko-Girlanden im kindgerechten Stil, zu jedem Thema. Die Rakete hier? Hat die KI gezeichnet.</p>
       </div>
       <div class="cell c-3 reveal">
         <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg></div>
         <h3>Vorlesen und Audio</h3>
-        <p>Jede Aufgabe kann sich deine Klasse vorlesen lassen, mit wählbarer Stimme. Dazu Hörverstehen für Deutsch und Englisch.</p>
-        <div class="wave" aria-hidden="true">
-          <div class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="bars"><b style="--i:0"></b><b style="--i:1"></b><b style="--i:2"></b><b style="--i:3"></b><b style="--i:4"></b><b style="--i:5"></b><b style="--i:6"></b><b style="--i:7"></b></div>
+        <p id="audioText">Die KI liest jede Aufgabe vor, mit wählbarer Stimme, und erzeugt sogar Geräusche fürs Hörverstehen. Beim gedruckten Blatt hören die Kinder das Audio über einen QR-Code.</p>
+        <div class="wave">
+          <button class="play" id="playBtn" type="button" aria-label="Diesen Text vorlesen lassen">
+            <svg id="icoPlay" width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="icoStop" width="12" height="12" viewBox="0 0 24 24" fill="#fff" style="display:none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+          </button>
+          <div class="bars" id="bars" aria-hidden="true"><b style="--i:0"></b><b style="--i:1"></b><b style="--i:2"></b><b style="--i:3"></b><b style="--i:4"></b><b style="--i:5"></b><b style="--i:6"></b><b style="--i:7"></b></div>
+          <span class="wave-hint" id="waveHint">Klick auf Play, ich lese dir das vor.</span>
         </div>
       </div>
+      <div class="cell c-2 reveal">
+        <div class="ico" style="background:#EFF6EA"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 13l2 2 4-4"/></svg></div>
+        <h3>Punkte zählen, Note fertig</h3>
+        <p>Vergib Punkte pro Aufgabe, der Baukasten rechnet zusammen und macht automatisch eine Note daraus. Mit den echten Notenskalen für dein Land.</p>
+        <div class="chips"><span>DE 1 bis 6</span><span>AT 1 bis 5</span><span>CH 6 bis 1</span></div>
+      </div>
+      <div class="cell c-2 reveal">
+        <div class="ico" style="background:#FDF1EC"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7a2.12 2.12 0 00-3-3l-7 7-1 4z"/><path d="M18 8l-2-2"/><path d="M4 21h5"/></svg></div>
+        <h3>Echte Schulschriften</h3>
+        <p>Buchstaben nachfahren und Schwungübungen in den offiziellen Schulausgangsschriften, mit den richtigen Lineaturen für Klasse 1 bis 4. Auch als Schweizer Basisschrift.</p>
+      </div>
+      <div class="cell c-2 tint-teal reveal">
+        <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/></svg></div>
+        <h3>Lesehilfe eingebaut</h3>
+        <p>Silben zweifarbig, Leselineal und größere Schrift auf Knopfdruck. So kommen auch Kinder mit, die beim Lesen noch Anlauf brauchen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shots">
+  <div class="wrap">
+    <div class="center reveal">
+      <h2>Echt aus dem Baukasten</h2>
+      <p class="lede">Keine Mockups: So sieht der Baukasten wirklich aus, vom fertigen Blatt bis zum Unterricht am Tablet und an der Tafel.</p>
+    </div>
+    <div class="shot-grid">
+      <figure class="reveal">
+        <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
+        <img src="shot-04-mathe-arbeitsblatt.png" alt="Der Baukasten-Editor mit einem fertigen Mathe-Arbeitsblatt: Zahlenmauer und Rechenpäckchen, Lösungen in Blau" loading="lazy">
+        <figcaption>Ein fertiges Mathe-Blatt im Editor: Lösungen blendest du mit einem Klick ein und aus.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
+        <img src="shot-14-tabletversion.png" alt="Die Tablet-Version: Kinder lösen das Blatt digital und bekommen sofort Rückmeldung" loading="lazy">
+        <figcaption>Mitmach-Modus am Tablet: sofortige Rückmeldung, Konfetti inklusive.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
+        <img src="shot-15-whiteboard.png" alt="Die Whiteboard-Ansicht für die Tafel mit Timer und Lösungen zum Aufdecken" loading="lazy">
+        <figcaption>Whiteboard-Ansicht für die Tafel: präsentieren, mitmachen lassen, Lösungen aufdecken.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -450,15 +512,18 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       <p class="lede">Die KI macht den Anfang, du behältst die Kontrolle: ziehen, ablegen, neu würfeln, Bilder von der KI zeichnen lassen. Klick dich durch die Fächer:</p>
     </div>
     <div class="tabs reveal" role="tablist">
-      <button class="on" data-tab="0">Mathe</button>
-      <button data-tab="1">Deutsch</button>
-      <button data-tab="2">Sachunterricht</button>
-      <button data-tab="3">Englisch</button>
-      <button data-tab="4">Musik</button>
-      <button data-tab="5">Extras</button>
+      <button class="on" data-tab="0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg>Mathe</button>
+      <button data-tab="1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2z"/><path d="M12 6v14"/></svg>Deutsch</button>
+      <button data-tab="2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>Sachunterricht</button>
+      <button data-tab="3"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11h-9l-4 4v-4H4z"/></svg>Englisch</button>
+      <button data-tab="4"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="15" r="2.5"/></svg>Musik</button>
+      <button data-tab="5"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.3 5.8 2.2-5.8 2.2L12 18l-2.2-5.3L4 10.5l5.8-2.2z"/></svg>Extras</button>
     </div>
-    <div class="panel on" data-panel></div>
-    <p class="hint">Bausteine mit <b>✦</b> nutzen KI. Alles andere funktioniert sogar ohne Internet.</p>
+    <div class="panelbox reveal">
+      <p class="panel-label">Bausteine im Fach <b id="fachName">Mathe</b> · anklicken, ziehen, ablegen</p>
+      <div class="panel on" data-panel></div>
+    </div>
+    <p class="hint">Bausteine mit <b>✦</b> nutzen KI, alle anderen brauchen keine.</p>
   </div>
 </section>
 
@@ -487,8 +552,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
         <tr><td>Sofort loslegen, nichts installieren</td><td class="yes">✓ am Schul-PC, Laptop und Tablet</td><td class="no">Programm muss installiert werden</td></tr>
         <tr><td>Drei Niveaustufen erzeugen</td><td class="yes">✓ ein Klick</td><td class="no">manuell, drei Mal bauen</td></tr>
         <tr><td>Klasse arbeitet am Tablet und an der Tafel mit</td><td class="yes">✓ ganz ohne extra App</td><td class="no">nur mit extra App</td></tr>
-        <tr><td>KI-Bilder und Vorlesen</td><td class="yes">✓ eingebaut</td><td class="no">nein</td></tr>
-        <tr><td>Fertige Blätter zum Übernehmen</td><td class="yes">✓ Materialbibliothek</td><td class="yes">✓ Tauschbörse</td></tr>
+        <tr><td>KI-Bilder, Vorlesen und Geräusche</td><td class="yes">✓ von der KI erzeugt</td><td class="no">nur einfache Sounds, ohne KI</td></tr>
+        <tr><td>Fertige Blätter zum Übernehmen</td><td class="yes">✓ Materialbörse</td><td class="yes">✓ Tauschbörse</td></tr>
       </tbody>
     </table>
     </div>
@@ -502,7 +567,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="faq reveal">
       <details>
         <summary>Was ist der KI-Material-Baukasten?</summary>
-        <p>Ein digitaler Baukasten, mit dem du Arbeitsblätter für die Grundschule erstellst. Die KI baut dir aus einem Satz ein fertiges Blatt, das du mit über 150 Bausteinen frei anpassen kannst. Du musst nichts installieren, er öffnet sich einfach im Internet, wie diese Seite hier. Er ist Teil von KI Schulgenie, der KI-Plattform für Lehrkräfte.</p>
+        <p>Ein digitaler Baukasten, mit dem du Arbeitsblätter für die Grundschule erstellst. Die KI baut dir aus einem Satz ein fertiges Blatt, das du mit über 300 Bausteinen frei anpassen kannst. Du musst nichts installieren, er öffnet sich einfach im Internet, wie diese Seite hier. Er ist Teil von KI Schulgenie, der KI-Plattform für Lehrkräfte.</p>
       </details>
       <details>
         <summary>Für wen ist der Baukasten gedacht?</summary>
@@ -510,7 +575,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       </details>
       <details>
         <summary>Was kostet das?</summary>
-        <p>Du testest 14 Tage kostenlos und kannst jederzeit kündigen. Der Baukasten ist Teil von KI Schulgenie, du bekommst also die komplette Plattform mit über 130 KI-Tools dazu: Korrektur, Zeugnisse, Elternbriefe, Unterrichtsplanung und mehr.</p>
+        <p>Du testest 14 Tage kostenlos und kannst jederzeit kündigen. Der Baukasten ist in jedem KI-Schulgenie-Abo enthalten, ohne Aufpreis und ohne extra Konto. Du bekommst also die komplette Plattform mit über 130 KI-Tools dazu: Korrektur, Zeugnisse, Elternbriefe, Unterrichtsplanung und mehr.</p>
       </details>
       <details>
         <summary>Ich bin kein Technik-Mensch. Klappt das trotzdem?</summary>
@@ -518,7 +583,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       </details>
       <details>
         <summary>Ist das DSGVO-konform?</summary>
-        <p>Ja. Die Daten liegen auf Servern in der EU, und für den Unterricht braucht keine Schülerin und kein Schüler ein eigenes Konto.</p>
+        <p>Ja. Die Daten liegen auf Servern in der EU, und deine Schüler:innen brauchen keine eigenen Konten.</p>
       </details>
       <details>
         <summary>Ich arbeite mit Worksheet Crafter. Lohnt sich der Blick?</summary>
@@ -549,12 +614,12 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const wishes=[
-  'Sachaufgaben zum Zehnerübergang, Klasse 2, Thema Bauernhof',
-  'Lückentext zum Eichhörnchen für Klasse 3',
-  'Kreuzworträtsel: Tiere im Wald, Klasse 1',
-  'Steckbrief zum Igel mit KI-Bild, Klasse 2',
+  'Zehnerübergang üben, Klasse 2',
+  'Lückentext zum Wasserkreislauf für Klasse 3',
+  'Kreuzworträtsel: Weltall, Klasse 1',
+  'Steckbrief zur Feuerwehr mit KI-Bild, Klasse 2',
   'Uhrzeiten ablesen üben, Klasse 2',
-  'Englisch: Wörter verbinden, on the farm, Klasse 3',
+  'Englisch: Wörter verbinden, my body, Klasse 3',
   'Musik: Finde alle C auf der Klaviatur, Klasse 3'
 ];
 const wishEl=document.getElementById('wish');
@@ -589,16 +654,32 @@ const BAUSTEINE=[
   ['Steckbrief ✦','Forscherauftrag','Wahr oder falsch ✦','Bild beschriften','Zeitstrahl','Vergleichstabelle','Lernkarten','Memory-Karten','Themenspinne','Quiz ✦','Bestimmungsschlüssel','Deutschland-Karte'],
   ['Vokabelliste ✦','Wörter verbinden','Satz ordnen','Bingo','Dialog ✦','All about me','Kreuzworträtsel','Hörverstehen ✦','Bewegungskarten','Reim und Chant ✦'],
   ['Notennamen','Klaviatur','Notenwerte rechnen','Komponisten-Steckbrief ✦','Musik-Quiz ✦','Pausenwerte','Leere Notenlinien','Singstimmen'],
-  ['KI-Bilder ✦','Deko-Girlanden ✦','Vorlesen und Audio ✦','QR-Code','Urkunden','Namensschilder','Stundenplan','Selbstkontrolle','Lösungswort','Tabelle','Sprechblasen','Karofeld']
+  ['KI-Bilder ✦','Deko-Girlanden ✦','Vorlesen und Audio ✦','QR-Code','Urkunden','Namensschilder','Stundenplan','Selbstkontrolle','Lösungswort','Tabelle','Sprechblasen','Karofeld','Punkte und Notenschlüssel','Schulschriften und Lineaturen','Lesehilfe','PDF hochladen ✦','Wunsch diktieren ✦']
 ];
 const panel=document.querySelector('[data-panel]');
 const tabs=[...document.querySelectorAll('.tabs button')];
 function showTab(n){
   tabs.forEach((t,i)=>t.classList.toggle('on',i===n));
+  document.getElementById('fachName').textContent=tabs[n].textContent.trim();
   panel.innerHTML=BAUSTEINE[n].map((b,i)=>`<span${b.includes('✦')?' class="ki"':''} style="--i:${i}">${b}</span>`).join('');
 }
 tabs.forEach((t,i)=>t.addEventListener('click',()=>showTab(i)));
 showTab(0);
+
+const playBtn=document.getElementById('playBtn');
+if(playBtn&&'speechSynthesis' in window){
+  const bars=document.getElementById('bars'),ip=document.getElementById('icoPlay'),is=document.getElementById('icoStop');
+  playBtn.addEventListener('click',()=>{
+    if(speechSynthesis.speaking){speechSynthesis.cancel();return}
+    const u=new SpeechSynthesisUtterance(document.getElementById('audioText').textContent);
+    u.lang='de-DE';
+    u.onstart=()=>{bars.classList.add('speaking');ip.style.display='none';is.style.display='block'};
+    u.onend=u.onerror=()=>{bars.classList.remove('speaking');ip.style.display='block';is.style.display='none'};
+    speechSynthesis.speak(u);
+  });
+}else if(playBtn){
+  document.getElementById('waveHint').textContent='Vorlesen gibt es direkt im Baukasten.';
+}
 
 </script>
 <script type="module">
@@ -610,8 +691,7 @@ try{
       const i=[...el.parentElement.children].indexOf(el);
       animate(el,{opacity:1,transform:'translateY(0px)'},{type:'spring',stiffness:80,damping:16,delay:(i%3)*.08});
     },{amount:.15});
-    animate('.chip-a',{y:[0,-6,0],rotate:-2},{duration:4,repeat:Infinity,ease:'easeInOut'});
-    animate('.chip-b',{y:[0,5,0],rotate:2},{duration:4.6,repeat:Infinity,ease:'easeInOut'});
+    animate('.chip-b',{transform:['rotate(2deg) translateY(0px)','rotate(2deg) translateY(5px)','rotate(2deg) translateY(0px)']},{duration:4.6,repeat:Infinity,ease:'easeInOut'});
     scroll(animate('.demo',{y:[0,34]},{ease:'linear'}),{target:document.querySelector('.hero'),offset:['start start','end start']});
   }
 }catch(e){
