@@ -456,7 +456,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
             <svg id="icoStop" width="12" height="12" viewBox="0 0 24 24" fill="#fff" style="display:none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
           </button>
           <div class="bars" id="bars" aria-hidden="true"><b style="--i:0"></b><b style="--i:1"></b><b style="--i:2"></b><b style="--i:3"></b><b style="--i:4"></b><b style="--i:5"></b><b style="--i:6"></b><b style="--i:7"></b></div>
-          <span class="wave-hint" id="waveHint">Klick auf Play, ich lese dir das vor.</span>
+          <span class="wave-hint" id="waveHint">Klick auf Play, so klingt die KI-Stimme.</span>
         </div>
       </div>
       <div class="cell c-2 reveal">
@@ -667,18 +667,17 @@ tabs.forEach((t,i)=>t.addEventListener('click',()=>showTab(i)));
 showTab(0);
 
 const playBtn=document.getElementById('playBtn');
-if(playBtn&&'speechSynthesis' in window){
+if(playBtn){
   const bars=document.getElementById('bars'),ip=document.getElementById('icoPlay'),is=document.getElementById('icoStop');
+  const voice=new Audio('vorlesen.mp3');voice.preload='none';
+  const reset=()=>{bars.classList.remove('speaking');ip.style.display='block';is.style.display='none'};
+  voice.addEventListener('play',()=>{bars.classList.add('speaking');ip.style.display='none';is.style.display='block'});
+  voice.addEventListener('pause',reset);
+  voice.addEventListener('ended',reset);
   playBtn.addEventListener('click',()=>{
-    if(speechSynthesis.speaking){speechSynthesis.cancel();return}
-    const u=new SpeechSynthesisUtterance(document.getElementById('audioText').textContent);
-    u.lang='de-DE';
-    u.onstart=()=>{bars.classList.add('speaking');ip.style.display='none';is.style.display='block'};
-    u.onend=u.onerror=()=>{bars.classList.remove('speaking');ip.style.display='block';is.style.display='none'};
-    speechSynthesis.speak(u);
+    if(voice.paused){voice.currentTime=0;voice.play().catch(()=>{document.getElementById('waveHint').textContent='Vorlesen gibt es direkt im Baukasten.'})}
+    else voice.pause();
   });
-}else if(playBtn){
-  document.getElementById('waveHint').textContent='Vorlesen gibt es direkt im Baukasten.';
 }
 
 </script>
