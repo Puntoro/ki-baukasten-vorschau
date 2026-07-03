@@ -174,7 +174,6 @@ h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;letter-spacing:-.02em;line-h
 .panel{display:none}
 .panel.on{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
 .panel span{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 16px;font-size:14.5px;font-weight:400;color:rgba(255,255,255,.92);opacity:0;transform:scale(.85);animation:pop .35s ease forwards;animation-delay:calc(var(--i)*.04s)}
-.panel span.ki{background:rgba(14,165,200,.22);border-color:rgba(127,220,239,.45)}
 @keyframes pop{to{opacity:1;transform:scale(1)}}
 .selfbuild .hint{text-align:center;font-size:14.5px;color:rgba(255,255,255,.6);margin-top:26px}
 .selfbuild .hint b{color:#7FDCEF}
@@ -547,8 +546,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="tabs reveal" role="tablist">
       <button class="on" data-tab="0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg>Mathe</button>
       <button data-tab="1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2z"/><path d="M12 6v14"/></svg>Deutsch</button>
-      <button data-tab="2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>Sachunterricht</button>
-      <button data-tab="3"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11h-9l-4 4v-4H4z"/></svg>Englisch</button>
+      <button data-tab="2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11h-9l-4 4v-4H4z"/></svg>Englisch</button>
+      <button data-tab="3"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>Sachunterricht</button>
       <button data-tab="4"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="15" r="2.5"/></svg>Musik</button>
       <button data-tab="5"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.3 5.8 2.2-5.8 2.2L12 18l-2.2-5.3L4 10.5l5.8-2.2z"/></svg>Extras</button>
     </div>
@@ -556,7 +555,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       <p class="panel-label">Bausteine im Fach <b id="fachName">Mathe</b> · anklicken, ziehen, ablegen</p>
       <div class="panel on" data-panel></div>
     </div>
-    <p class="hint">Bausteine mit <b>✦</b> nutzen KI, alle anderen brauchen keine.</p>
+    <p class="hint">Tipp dein Thema ein und die KI füllt jeden Baustein mit passendem Inhalt. <b>Rechenaufgaben rechnet der Baukasten selbst aus, da stimmt jede Lösung.</b></p>
   </div>
 </section>
 
@@ -690,19 +689,19 @@ dots.forEach((d,i)=>d.addEventListener('click',()=>show(i,!reduce)));
 show(0,!reduce);
 
 const BAUSTEINE=[
-  ['Rechenpäckchen','Zahlenmauer','Sachaufgaben ✦','Zahlenstrahl','Hundertertafel','Rechendreieck','Geld rechnen','Uhrzeit','Würfelgebäude','Geobrett','Magisches Quadrat','Sudoku 4×4','Rechenmalblatt','Schriftlich rechnen'],
-  ['Lückentext ✦','Schwungübungen','Buchstaben nachfahren','Silbenbögen','Wortarten','Purzelwörter','Wortsuchrätsel','Kreuzworträtsel','Lesetext ✦','Bildergeschichte','Elfchen','Reimwörter','Abschreibtext','Geheimschrift'],
-  ['Steckbrief ✦','Forscherauftrag','Wahr oder falsch ✦','Bild beschriften','Zeitstrahl','Vergleichstabelle','Lernkarten','Memory-Karten','Themenspinne','Quiz ✦','Bestimmungsschlüssel','Deutschland-Karte'],
-  ['Vokabelliste ✦','Wörter verbinden','Satz ordnen','Bingo','Dialog ✦','All about me','Kreuzworträtsel','Hörverstehen ✦','Bewegungskarten','Reim und Chant ✦'],
-  ['Notennamen','Klaviatur','Notenwerte rechnen','Komponisten-Steckbrief ✦','Musik-Quiz ✦','Pausenwerte','Leere Notenlinien','Singstimmen'],
-  ['KI-Bilder ✦','Deko-Girlanden ✦','Vorlesen und Audio ✦','QR-Code','Urkunden','Namensschilder','Stundenplan','Selbstkontrolle','Lösungswort','Tabelle','Sprechblasen','Karofeld','Punkte und Notenschlüssel','Schulschriften und Lineaturen','Lesehilfe','PDF hochladen ✦','Wunsch diktieren ✦']
+  ['Rechenpäckchen','Zahlenmauer','Sachaufgaben','Zahlenstrahl','Hundertertafel','Rechendreieck','Geld rechnen','Uhrzeit','Würfelgebäude','Geobrett','Magisches Quadrat','Sudoku 4×4','Rechenmalblatt','Schriftlich rechnen'],
+  ['Lückentext','Schwungübungen','Buchstaben nachfahren','Silbenbögen','Wortarten','Purzelwörter','Wortsuchrätsel','Kreuzworträtsel','Lesetext','Bildergeschichte','Elfchen','Reimwörter','Abschreibtext','Geheimschrift'],
+  ['Vokabelliste','Wörter verbinden','Satz ordnen','Bingo','Dialog','All about me','Kreuzworträtsel','Hörverstehen','Bewegungskarten','Reim und Chant'],
+  ['Steckbrief','Forscherauftrag','Wahr oder falsch','Bild beschriften','Zeitstrahl','Vergleichstabelle','Lernkarten','Memory-Karten','Themenspinne','Quiz','Bestimmungsschlüssel','Deutschland-Karte'],
+  ['Notennamen','Klaviatur','Notenwerte rechnen','Komponisten-Steckbrief','Musik-Quiz','Pausenwerte','Leere Notenlinien','Singstimmen'],
+  ['KI-Bilder','Deko-Girlanden','Vorlesen und Audio','QR-Code','Urkunden','Namensschilder','Stundenplan','Selbstkontrolle','Lösungswort','Tabelle','Sprechblasen','Karofeld','Punkte und Notenschlüssel','Schulschriften und Lineaturen','Lesehilfe','PDF hochladen','Wunsch diktieren']
 ];
 const panel=document.querySelector('[data-panel]');
 const tabs=[...document.querySelectorAll('.tabs button')];
 function showTab(n){
   tabs.forEach((t,i)=>t.classList.toggle('on',i===n));
   document.getElementById('fachName').textContent=tabs[n].textContent.trim();
-  panel.innerHTML=BAUSTEINE[n].map((b,i)=>`<span${b.includes('✦')?' class="ki"':''} style="--i:${i}">${b}</span>`).join('');
+  panel.innerHTML=BAUSTEINE[n].map((b,i)=>`<span style="--i:${i}">${b}</span>`).join('');
 }
 tabs.forEach((t,i)=>t.addEventListener('click',()=>showTab(i)));
 showTab(0);
