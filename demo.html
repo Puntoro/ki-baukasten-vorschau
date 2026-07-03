@@ -41,6 +41,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-f
 .tt-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 13px;font:600 13.5px 'Outfit',sans-serif;color:var(--navy);cursor:pointer}
 .tt-btn:hover{border-color:var(--teal)}
 .tt-btn.ki{background:var(--teal);border-color:var(--teal);color:#06222b}
+.ki-credits{display:inline-flex;align-items:center;font-size:12.5px;font-weight:600;color:var(--teal-ink);background:#EAF7FB;border:1px solid rgba(14,165,200,.3);border-radius:999px;padding:5px 12px}
+.ki-credits.leer{color:var(--orange);background:#FDF1EC;border-color:rgba(217,119,87,.3)}
 .tt-btn.locked{color:rgba(11,31,63,.38);background:#F3F5F8;cursor:pointer}
 .tt-btn.locked:hover{border-color:var(--line)}
 .tool-body{display:flex;min-height:540px}
@@ -167,6 +169,7 @@ footer{padding:28px 0;background:#fff}
   <div class="tool-shell" id="tool-embed">
     <div class="tool-top">
       <button class="tt-btn ki" id="btnKi">✦ KI-Assistent</button>
+      <span class="ki-credits" id="kiCredits" title="Kostenlose KI-Versuche im Schnuppermodus">3 KI-Versuche frei</span>
       <button class="tt-btn" id="btnSol"><span id="solLabel">Lösungen zeigen</span></button>
       <button class="tt-btn" id="btnLeer">Leeren</button>
       <span style="flex:1"></span>
@@ -216,7 +219,7 @@ footer{padding:28px 0;background:#fff}
 </div>
 
 <section class="after-tool">
-  <p><b>Gefällt dir, was du siehst?</b> Im kostenlosen Test ist alles offen: der volle KI-Assistent, über 300 Bausteine, KI-Bilder, Vorlesen, Drucken mit Lösungsblatt und der Tablet-Modus für deine Klasse.</p>
+  <p><b>Gefällt dir, was du siehst?</b> Im kostenlosen Test ist alles offen und unbegrenzt nutzbar: der volle KI-Assistent, über 300 Bausteine, KI-Bilder, Vorlesen, Drucken mit Lösungsblatt und der Tablet-Modus für deine Klasse.</p>
   <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span>→</span></a>
   <p class="cta-help">130+ weitere KI-Tools inklusive. Jederzeit kündbar.</p>
 </section>
@@ -264,8 +267,9 @@ footer{padding:28px 0;background:#fff}
 
 <div class="trust">
   <div class="trust-in">
-    <div><span class="k">★ 4,9</span> Bewertung der Plattform</div>
-    <div><span class="k">Klasse 1 bis 4</span> gemacht für die Grundschule</div>
+    <div><span class="k">★ 4,9</span> von Lehrkräften bewertet</div>
+    <div><span class="k">Lehrplan-konform</span> in D, A und CH</div>
+    <div><span class="k">Klasse 1 bis 4</span> für die Grundschule</div>
     <div><span class="k">DSGVO</span> Server in der EU</div>
   </div>
 </div>
@@ -313,7 +317,7 @@ const BLOECKE={
 
 function addBlock(art){
   if(sheet.querySelectorAll('.blk').length>=4){
-    sag('Im Schnuppermodus ist hier Schluss. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> baust du so viele Seiten, wie du willst.');
+    sag('Im Schnuppermodus ist hier Schluss. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> baust du unbegrenzt, so viele Seiten du willst.');
     return;
   }
   leer.style.display='none';
@@ -332,14 +336,25 @@ function addBlock(art){
 
 document.querySelectorAll('[data-add]').forEach(btn=>btn.addEventListener('click',()=>addBlock(btn.dataset.add)));
 document.querySelectorAll('[data-lock]').forEach(el=>el.addEventListener('click',()=>{
-  sag(`🔒 ${el.dataset.lock} ist im Schnuppermodus gesperrt. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> ist alles offen.`);
+  sag(`🔒 ${el.dataset.lock} ist im Schnuppermodus gesperrt. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> ist alles offen und unbegrenzt nutzbar.`);
 }));
 
+let kiCredits=3;
+const kiCreditsEl=document.getElementById('kiCredits');
+function updCredits(){
+  kiCreditsEl.textContent=kiCredits>0?`${kiCredits} KI-Versuche frei`:'KI-Versuche aufgebraucht';
+  kiCreditsEl.classList.toggle('leer',kiCredits<=0);
+}
 document.getElementById('btnKi').addEventListener('click',()=>{
+  if(kiCredits<=0){
+    sag('Deine 3 kostenlosen KI-Versuche sind aufgebraucht. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> generierst du unbegrenzt weiter.');
+    return;
+  }
+  kiCredits--;updCredits();
   sheet.querySelectorAll('.blk').forEach(b=>b.remove());
   leer.style.display='none';
   addBlock('wall');addBlock('calc');
-  sag('✦ Fertig! Die KI hat dir ein Beispiel-Blatt gebaut. Im echten Baukasten tippst du dafür einfach dein Wunschthema ein.');
+  sag(`✦ Fertig! Die KI hat dir ein Beispiel-Blatt gebaut. Noch ${kiCredits} von 3 KI-Versuchen frei.`);
 });
 document.getElementById('btnLeer').addEventListener('click',()=>{
   sheet.querySelectorAll('.blk').forEach(b=>b.remove());
