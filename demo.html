@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI Material-Baukasten | Jetzt direkt ausprobieren, ohne Anmeldung</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Probier den KI-Material-Baukasten direkt im Browser aus: Bausteine anklicken, Zahlen würfeln, Lösungen einblenden. Ohne Anmeldung. Der volle Baukasten: 14 Tage kostenlos.">
+<link rel="icon" href="logo-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3F; --teal:#0EA5C8; --teal-ink:#0A7E9C; --orange:#D97757;
+  --green:#1B7A4A; --bg:#F3F7FB; --line:rgba(11,31,63,.12); --ink-soft:rgba(11,31,63,.72);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--navy);line-height:1.6;font-size:17px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+a{color:var(--teal-ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 28px;font:600 16.5px 'Outfit',sans-serif;cursor:pointer;text-decoration:none;transition:transform .18s,background .18s}
+.btn:hover{background:#122d57;transform:translateY(-2px)}
+.btn:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.btn-sm{padding:10px 20px;font-size:15px;white-space:nowrap}
+.l-short{display:none}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-in img{height:32px}
+
+.mini-hero{text-align:center;padding:40px 20px 22px}
+.mini-hero h1{font-size:clamp(30px,4.2vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.mini-hero h1 em{font-style:normal;color:var(--teal-ink)}
+.mini-hero p{color:var(--ink-soft);max-width:56ch;margin:12px auto 0;font-size:17.5px}
+.demo-badge{display:inline-flex;align-items:center;gap:7px;background:#FDF1EC;color:var(--orange);border-radius:999px;padding:6px 16px;font-size:13.5px;font-weight:600;margin-bottom:14px}
+
+/* ===== TOOL-FENSTER · MARCO: Inhalt von #tool-embed durch echtes Tool (iframe, Demo-Modus) ersetzen ===== */
+.tool-shell{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 70px rgba(11,31,63,.12);overflow:hidden;margin:10px 0 26px}
+.tool-top{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:#FAFCFE;flex-wrap:wrap}
+.tt-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 13px;font:600 13.5px 'Outfit',sans-serif;color:var(--navy);cursor:pointer}
+.tt-btn:hover{border-color:var(--teal)}
+.tt-btn.ki{background:var(--teal);border-color:var(--teal);color:#06222b}
+.tt-btn.locked{color:rgba(11,31,63,.38);background:#F3F5F8;cursor:pointer}
+.tt-btn.locked:hover{border-color:var(--line)}
+.tool-body{display:flex;min-height:540px}
+.tool-side{width:216px;flex-shrink:0;border-right:1px solid var(--line);background:#FAFCFE;padding:12px;overflow-y:auto}
+.side-label{font-size:11.5px;font-weight:600;letter-spacing:.06em;color:var(--ink-soft);margin:10px 6px 6px;text-transform:uppercase}
+.bs{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 11px;font:600 13.5px 'Outfit',sans-serif;color:var(--navy);cursor:pointer;margin-bottom:6px;text-align:left}
+.bs:hover{border-color:var(--teal);background:#F0FAFD}
+.bs.locked{color:rgba(11,31,63,.38);background:#F3F5F8}
+.bs.locked:hover{border-color:var(--line);background:#F3F5F8}
+.tool-canvas{flex:1;padding:22px;overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;background:repeating-linear-gradient(0deg,transparent,transparent 25px,rgba(14,165,200,.04) 26px),repeating-linear-gradient(90deg,transparent,transparent 25px,rgba(14,165,200,.04) 26px)}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 34px rgba(11,31,63,.10);width:100%;max-width:520px;min-height:480px;padding:26px 26px 20px;position:relative}
+.sheet-head{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);border-bottom:1.5px solid var(--line);padding-bottom:8px;margin-bottom:14px}
+.leer-hinweis{text-align:center;color:rgba(11,31,63,.45);font-size:14.5px;padding:60px 20px}
+.leer-hinweis b{color:var(--teal-ink)}
+.blk{border:1px dashed transparent;border-radius:8px;padding:10px;margin-bottom:8px;position:relative}
+.blk:hover{border-color:rgba(14,165,200,.5)}
+.blk h4{font-size:15px;margin-bottom:8px}
+.blk .wuerfel{position:absolute;top:6px;right:6px;border:1px solid var(--line);background:#fff;border-radius:7px;width:28px;height:28px;font-size:14px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.blk:hover .wuerfel{display:flex}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:7px 22px;font-size:14.5px}
+.calc span{border-bottom:1px dashed var(--line);padding-bottom:3px}
+.sol{color:#2563eb;font-weight:600;display:none}
+.show-sol .sol{display:inline}
+.wall{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0}
+.wall .row{display:flex;gap:5px}
+.wall .brick{width:56px;height:27px;border:1.5px solid var(--line);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;background:#fff}
+.wall .brick .sol{font-weight:700}
+.gapline{font-size:14.5px;line-height:2}
+.gapline .gap{display:inline-block;min-width:80px;border-bottom:1.5px dashed var(--teal);text-align:center}
+.gapline .gap .sol{font-size:13.5px}
+.tool-right{width:216px;flex-shrink:0;border-left:1px solid var(--line);background:#FAFCFE;padding:12px}
+.tr-item{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:600 13px 'Outfit',sans-serif;color:rgba(11,31,63,.38);background:#F3F5F8;margin-bottom:6px;cursor:pointer}
+.toast{position:absolute;left:50%;top:14px;transform:translateX(-50%) translateY(-8px);background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px;font-size:14px;box-shadow:0 14px 40px rgba(11,31,63,.3);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:20;max-width:92%;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast a{color:#7FDCEF;font-weight:600}
+.tool-stage{position:relative}
+
+.after-tool{text-align:center;padding:6px 20px 60px}
+.after-tool p{font-size:18px;color:var(--ink-soft);max-width:54ch;margin:0 auto 22px}
+.after-tool p b{color:var(--navy)}
+.cta-help{font-size:13.5px;color:var(--ink-soft);margin-top:12px}
+
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.trust-in{display:flex;justify-content:center;gap:clamp(14px,3.2vw,48px);padding:20px 24px;flex-wrap:wrap}
+.trust-in div{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;white-space:nowrap}
+.trust-in .k{color:var(--teal-ink)}
+
+footer{padding:28px 0;background:#fff}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
+.foot img{height:28px}
+.foot .links{display:flex;gap:20px}
+.foot a{color:var(--ink-soft);text-decoration:none}
+
+.cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease;display:none}
+.cta-bar .btn{width:100%;justify-content:center}
+.cta-bar.show{transform:none}
+
+@media (prefers-reduced-motion: reduce){.btn,.toast,.cta-bar{transition:none}}
+@media (max-width:900px){
+  .tool-side,.tool-right{display:none}
+  .tool-body{flex-direction:column;min-height:0}
+  .bs-mobile{display:flex;gap:7px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--line);background:#FAFCFE}
+  .bs-mobile .bs{width:auto;flex-shrink:0;margin:0}
+  .tool-canvas{padding:14px}
+  .sheet{min-height:380px;padding:18px 16px 14px}
+  .cta-bar{display:block}
+  .foot{flex-direction:column;text-align:center}
+  .l-long{display:none}.l-short{display:inline}
+}
+@media (min-width:901px){.bs-mobile{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <img src="logo.svg" alt="KI Material-Baukasten">
+    <a class="btn btn-sm" href="https://kischulgenie.com/auth/sign-up"><span class="l-long">14 Tage kostenlos testen</span><span class="l-short">Kostenlos testen</span></a>
+  </div>
+</nav>
+
+<header class="mini-hero">
+  <span class="demo-badge">Schnupper-Demo · ohne Anmeldung</span>
+  <h1>Probier den Baukasten. <em>Jetzt gleich, hier.</em></h1>
+  <p>Klick Bausteine aufs Blatt, würfle neue Aufgaben, blende Lösungen ein. Ein paar Funktionen sind in der Demo gesperrt, du erkennst sie am Schloss.</p>
+</header>
+
+<div class="wrap">
+  <!-- ===================================================================
+       MARCO: Diesen kompletten .tool-shell-Block durch das echte Tool
+       ersetzen (iframe im Demo-Modus, ca. 75vh Höhe). Die Mini-Demo hier
+       zeigt nur das Konzept: freie Bausteine + gesperrte Bereiche (Schloss).
+       =================================================================== -->
+  <div class="tool-shell" id="tool-embed">
+    <div class="tool-top">
+      <button class="tt-btn ki" id="btnKi">✦ KI-Assistent</button>
+      <button class="tt-btn" id="btnSol"><span id="solLabel">Lösungen zeigen</span></button>
+      <button class="tt-btn" id="btnLeer">Leeren</button>
+      <span style="flex:1"></span>
+      <button class="tt-btn locked" data-lock="Drucken">🔒 Drucken</button>
+      <button class="tt-btn locked" data-lock="Speichern">🔒 Speichern</button>
+      <button class="tt-btn locked" data-lock="Die Tablet-Version">🔒 Tabletversion</button>
+      <button class="tt-btn locked" data-lock="Der Whiteboard-Modus">🔒 Whiteboard</button>
+    </div>
+    <div class="bs-mobile" aria-label="Bausteine">
+      <button class="bs" data-add="calc">Rechenpäckchen</button>
+      <button class="bs" data-add="wall">Zahlenmauer</button>
+      <button class="bs" data-add="gap">Lückentext</button>
+      <button class="bs locked" data-lock="KI-Bilder">🔒 KI-Bilder</button>
+      <button class="bs locked" data-lock="Vorlesen und Audio">🔒 Audio</button>
+    </div>
+    <div class="tool-body">
+      <aside class="tool-side">
+        <div class="side-label">Mathe</div>
+        <button class="bs" data-add="calc">Rechenpäckchen</button>
+        <button class="bs" data-add="wall">Zahlenmauer</button>
+        <div class="side-label">Deutsch &amp; Sachunterricht</div>
+        <button class="bs" data-add="gap">Lückentext</button>
+        <button class="bs locked" data-lock="Der Steckbrief-Baustein">🔒 Steckbrief</button>
+        <button class="bs locked" data-lock="Das Kreuzworträtsel">🔒 Kreuzworträtsel</button>
+        <div class="side-label">Extras</div>
+        <button class="bs locked" data-lock="KI-Bilder">🔒 KI-Bilder</button>
+        <button class="bs locked" data-lock="Vorlesen und Audio">🔒 Vorlesen &amp; Audio</button>
+        <button class="bs locked" data-lock="Deko und Girlanden">🔒 Deko-Girlanden</button>
+      </aside>
+      <div class="tool-canvas tool-stage">
+        <div class="toast" id="toast" role="status"></div>
+        <div class="sheet" id="sheet">
+          <div class="sheet-head"><span>Name: ________</span><span>Datum: ________</span></div>
+          <div class="leer-hinweis" id="leer">Dein Blatt ist noch leer.<br><b>Klick links einen Baustein an</b> oder lass den ✦ KI-Assistenten bauen.</div>
+        </div>
+      </div>
+      <aside class="tool-right">
+        <div class="side-label">Blatt-Einstellungen</div>
+        <div class="tr-item" data-lock="Die Differenzierung in leicht, mittel und schwer">🔒 In 3 Stufen aufteilen</div>
+        <div class="tr-item" data-lock="Der Notenschlüssel">🔒 Punkte und Note</div>
+        <div class="tr-item" data-lock="Die Hintergrund-Designs">🔒 Hintergrund-Design</div>
+        <div class="tr-item" data-lock="Die Schulschriften">🔒 Schulschriften</div>
+        <div class="tr-item" data-lock="Die Seitenformate">🔒 Seitenformat</div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<section class="after-tool">
+  <p><b>Gefällt dir, was du siehst?</b> Im kostenlosen Test ist alles offen: der volle KI-Assistent, über 300 Bausteine, KI-Bilder, Vorlesen, Drucken mit Lösungsblatt und der Tablet-Modus für deine Klasse.</p>
+  <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span>→</span></a>
+  <p class="cta-help">130+ KI-Tools von KI Schulgenie inklusive. Jederzeit kündbar.</p>
+</section>
+
+<div class="trust">
+  <div class="trust-in">
+    <div><span class="k">65.000+</span> Lehrkräfte bei KI Schulgenie</div>
+    <div><span class="k">★ 4,9</span> Bewertung der Plattform</div>
+    <div><span class="k">Klasse 1 bis 4</span> gemacht für die Grundschule</div>
+    <div><span class="k">DSGVO</span> Server in der EU</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <img src="logo.svg" alt="KI Material-Baukasten">
+    <span>Ein Produkt von <a href="https://kischulgenie.com">KI Schulgenie</a></span>
+    <span class="links"><a href="https://kischulgenie.com/impressum">Impressum</a><a href="https://kischulgenie.com/datenschutz">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="cta-bar" id="ctaBar">
+  <a class="btn" href="https://kischulgenie.com/auth/sign-up">Jetzt 14 Tage kostenlos testen <span>→</span></a>
+</div>
+
+<script>
+const sheet=document.getElementById('sheet'),leer=document.getElementById('leer'),toast=document.getElementById('toast');
+let toastTimer;
+function sag(html){
+  toast.innerHTML=html;toast.classList.add('on');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('on'),3400);
+}
+function z(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+
+function calcRows(el){
+  let html='';
+  for(let i=0;i<4;i++){
+    const a=z(11,89),b=z(2,9);
+    html+=`<span>${a} + ${b} = <b class="sol">${a+b}</b></span>`;
+  }
+  el.innerHTML=html;
+}
+function wallRows(el){
+  const u=[z(3,9),z(3,9),z(3,9)],m=[u[0]+u[1],u[1]+u[2]],t=m[0]+m[1];
+  el.innerHTML=`<div class="row"><span class="brick"><span class="sol">${t}</span></span></div>
+  <div class="row"><span class="brick"><span class="sol">${m[0]}</span></span><span class="brick"><span class="sol">${m[1]}</span></span></div>
+  <div class="row"><span class="brick">${u[0]}</span><span class="brick">${u[1]}</span><span class="brick">${u[2]}</span></div>`;
+}
+
+const BLOECKE={
+  calc:{titel:'Rechne aus.',mach(inner){inner.className='inner calc';calcRows(inner)},wuerfelbar:true},
+  wall:{titel:'Addiere zwei benachbarte Steine zur Zahl darüber.',mach(inner){inner.className='inner wall';wallRows(inner)},wuerfelbar:true},
+  gap:{titel:'Setze die Wörter richtig ein.',mach(inner){inner.className='inner gapline';inner.innerHTML='Die Sonne erwärmt das Wasser, es steigt als <span class="gap"><span class="sol">Wasserdampf</span></span> auf. Fällt es als <span class="gap"><span class="sol">Regen</span></span> zurück, beginnt alles von vorn.'},wuerfelbar:false}
+};
+
+function addBlock(art){
+  if(sheet.querySelectorAll('.blk').length>=4){
+    sag('Im Schnuppermodus ist hier Schluss. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> baust du so viele Seiten, wie du willst.');
+    return;
+  }
+  leer.style.display='none';
+  const b=BLOECKE[art],el=document.createElement('div');
+  el.className='blk';
+  el.innerHTML=`<h4>${b.titel}</h4><div class="inner"></div>`;
+  if(b.wuerfelbar){
+    const w=document.createElement('button');
+    w.className='wuerfel';w.textContent='🎲';w.title='Neu würfeln';
+    w.addEventListener('click',()=>{b.mach(el.querySelector('.inner'));});
+    el.appendChild(w);
+  }
+  b.mach(el.querySelector('.inner'));
+  sheet.appendChild(el);
+}
+
+document.querySelectorAll('[data-add]').forEach(btn=>btn.addEventListener('click',()=>addBlock(btn.dataset.add)));
+document.querySelectorAll('[data-lock]').forEach(el=>el.addEventListener('click',()=>{
+  sag(`🔒 ${el.dataset.lock} ist im Schnuppermodus gesperrt. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> ist alles offen.`);
+}));
+
+document.getElementById('btnKi').addEventListener('click',()=>{
+  sheet.querySelectorAll('.blk').forEach(b=>b.remove());
+  leer.style.display='none';
+  addBlock('wall');addBlock('calc');
+  sag('✦ Fertig! Die KI hat dir ein Beispiel-Blatt gebaut. Im echten Baukasten tippst du dafür einfach dein Wunschthema ein.');
+});
+document.getElementById('btnLeer').addEventListener('click',()=>{
+  sheet.querySelectorAll('.blk').forEach(b=>b.remove());
+  leer.style.display='block';sheet.classList.remove('show-sol');
+  document.getElementById('solLabel').textContent='Lösungen zeigen';
+});
+document.getElementById('btnSol').addEventListener('click',()=>{
+  if(!sheet.querySelector('.blk')){sag('Erst einen Baustein aufs Blatt legen, dann gibt es auch Lösungen.');return}
+  sheet.classList.toggle('show-sol');
+  document.getElementById('solLabel').textContent=sheet.classList.contains('show-sol')?'Lösungen verbergen':'Lösungen zeigen';
+});
+
+const bar=document.getElementById('ctaBar');
+if(bar){
+  let heroWeg=false,untenDa=false;
+  const upd=()=>bar.classList.toggle('show',heroWeg&&!untenDa);
+  new IntersectionObserver(es=>{es.forEach(e=>{heroWeg=!e.isIntersecting});upd()}).observe(document.querySelector('.mini-hero'));
+  const io2=new IntersectionObserver(es=>{es.forEach(e=>{untenDa=e.isIntersecting});upd()});
+  io2.observe(document.querySelector('.after-tool'));
+  io2.observe(document.querySelector('footer'));
+}
+</script>
+</body>
+</html>
