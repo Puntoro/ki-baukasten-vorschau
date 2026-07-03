@@ -201,9 +201,6 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 .foot a{color:var(--ink-soft);text-decoration:none}
 .foot a:hover{color:var(--navy)}
 
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
-.reveal.in{opacity:1;transform:none}
-
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal,.blk{opacity:1;transform:none;transition:none}
@@ -603,10 +600,23 @@ function showTab(n){
 tabs.forEach((t,i)=>t.addEventListener('click',()=>showTab(i)));
 showTab(0);
 
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
-},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script type="module">
+try{
+  const {animate, inView, scroll} = await import("https://cdn.jsdelivr.net/npm/motion@12/+esm");
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(26px)'});
+    inView('.reveal',el=>{
+      const i=[...el.parentElement.children].indexOf(el);
+      animate(el,{opacity:1,transform:'translateY(0px)'},{type:'spring',stiffness:80,damping:16,delay:(i%3)*.08});
+    },{amount:.15});
+    animate('.chip-a',{y:[0,-6,0],rotate:-2},{duration:4,repeat:Infinity,ease:'easeInOut'});
+    animate('.chip-b',{y:[0,5,0],rotate:2},{duration:4.6,repeat:Infinity,ease:'easeInOut'});
+    scroll(animate('.demo',{y:[0,34]},{ease:'linear'}),{target:document.querySelector('.hero'),offset:['start start','end start']});
+  }
+}catch(e){
+  document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity='';el.style.transform=''});
+}
 </script>
 </body>
 </html>
