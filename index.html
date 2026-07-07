@@ -51,8 +51,8 @@ h1 em{font-style:normal;color:var(--teal-ink)}
 .prompt .spark{color:#7FDCEF;flex-shrink:0}
 .prompt .caret{display:inline-block;width:2px;height:18px;background:#7FDCEF;margin-left:2px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.sheet{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 24px 60px rgba(11,31,63,.14);padding:34px 26px 24px;transform:rotate(1.5deg);position:relative;min-height:360px}
-.sheet-back{position:absolute;inset:112px -9px -14px 26px;background:#fff;border:1px solid var(--line);border-radius:6px;transform:rotate(-2deg);z-index:-1}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 24px 60px rgba(11,31,63,.14);padding:34px 30px 30px;transform:rotate(-1.5deg);position:relative;min-height:360px}
+.sheet-back{position:absolute;inset:112px 26px -14px -9px;background:#fff;border:1px solid var(--line);border-radius:6px;transform:rotate(2deg);z-index:-1}
 .sheet-head{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);border-bottom:1.5px solid var(--line);padding-bottom:8px;margin-bottom:14px}
 .sheet h3{font-size:19px;margin-bottom:2px}
 .sheet .topic{font-size:12.5px;color:var(--teal-ink);font-weight:600;margin-bottom:14px}
@@ -252,7 +252,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   .cta-help{font-size:13.5px}
   .demo{max-width:440px;margin:0 auto;width:100%}
   .sheet{transform:none}
-  .sheet-back{transform:rotate(-1.2deg)}
+  .sheet-back{transform:rotate(1.2deg)}
   .cta-bar{display:block}
   .foot{flex-direction:column;text-align:center;gap:12px}
   .final{padding:56px 22px}
@@ -286,7 +286,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div>
       <span class="eyebrow">Der KI-Arbeitsblatt-Baukasten für die Grundschule</span>
       <h1>Dein nächstes Arbeitsblatt <em>baut sich selbst.</em></h1>
-      <p class="sub">Tipp deinen Wunsch ein, die KI baut fertiges Material für Klasse 1 bis 4. Oder du baust selbst, Baustein für Baustein. Differenziert in drei Stufen, gedruckt oder aufs Tablet.</p>
+      <p class="sub">Tipp deinen Wunsch ein, die KI baut fertiges Material für Klasse 1 bis 4. Oder du baust selbst, Baustein für Baustein. Differenziert in drei Stufen, gedruckt oder für das Tablet.</p>
       <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span class="arr">→</span></a>
       <p class="cta-help">130+ weitere KI-Tools inklusive. Jederzeit kündbar.</p>
     </div>
@@ -325,12 +325,12 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
           <h3 class="blk" style="--i:0">Das Weltall</h3>
           <p class="topic blk" style="--i:0">Klasse 1 · Kreuzworträtsel</p>
           <div class="cross blk" style="--i:1">
-            <i class="b"></i><i class="b"></i><i class="t">S</i><i></i><i></i><i></i><i></i>
-            <i class="t">M</i><i></i><i>N</i><i></i><i class="b"></i><i class="b"></i><i class="b"></i>
-            <i class="b"></i><i class="b"></i><i>D</i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i>
-            <i class="t">R</i><i></i><i></i><i></i><i></i><i></i><i class="b"></i>
+            <i class="b"></i><i class="b"></i><i class="b"></i><i class="t">M</i><i class="b"></i><i class="b"></i><i class="b"></i>
+            <i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i>
+            <i class="b"></i><i class="t">S</i><i></i><i>N</i><i></i><i></i><i class="b"></i>
+            <i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i>
           </div>
-          <p class="quest blk" style="--i:2">1. Siehst du nachts am Himmel. → 2. Fliegt ins Weltall. →</p>
+          <p class="quest blk" style="--i:2">1. Leuchtet uns am Tag. → 2. Siehst du nachts am Himmel. ↓</p>
         </div>
 
         <div class="sheet-body" data-v>
@@ -400,7 +400,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 <div class="trust">
   <div class="trust-in">
     <div><span class="k">★ 4,9</span> von Lehrkräften bewertet</div>
-    <div><span class="k">Lehrplan-konform</span> in D, A und CH</div>
+    <div><span class="k">Lehrplan-konform</span> in DE, AT und CH</div>
     <div><span class="k">Klasse 1 bis 4</span> für die Grundschule</div>
     <div><span class="k">DSGVO</span> Server in der EU</div>
   </div>
@@ -409,7 +409,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 <section class="pain center">
   <div class="wrap reveal">
     <h2>Sonntag, 21:30 Uhr.<br>Du bastelst immer noch.</h2>
-    <p class="lede">Mathe, Deutsch und Sachunterricht für morgen. Das Internet liefert Material von 2009, die Kopiervorlage ist grau und die schöne Eigenbau-Version scheitert an Word. <strong>Nicht weil du faul bist.</strong> Sondern weil Arbeitsblätter bauen bisher Handarbeit war.</p>
+    <p class="lede">Mathe, Deutsch und Sachunterricht für morgen. Das Internet liefert Material von 2009, die Kopiervorlage ist grau und die schöne Eigenbau-Version scheitert an Word. <strong>Nicht weil du keine Ideen hast oder zu wenig Einsatz zeigst.</strong> Sondern weil niemand dir bisher ein Werkzeug gegeben hat, das wirklich funktioniert.</p>
     <p class="pivot">Ab jetzt nicht mehr.</p>
     <div class="stats">
       <div class="stat"><b>40 Min → 40 Sek</b><span>vom leeren Blatt zum fertigen Material</span></div>
@@ -428,13 +428,13 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="bento">
       <div class="cell c-hero reveal">
         <h3>Die KI baut dein Blatt. Komplett.</h3>
-        <p>Thema, Klasse, Wunsch eintippen, oder einfach ins Mikrofon sprechen. Der Assistent wählt passende Aufgaben, Bilder und Rätsel aus und stellt daraus ein fertiges Arbeitsblatt zusammen. Auch aus deinem eigenen Material: Lade einen Text oder ein PDF hoch, die KI baut Aufgaben daraus.</p>
-        <div class="wish">„<b>Sachaufgaben zum Zehnerübergang, Klasse 2, Thema Bauernhof</b>" → Blatt fertig. Mit Lösungsblatt.</div>
+        <p>Thema, Klasse und Wunsch eintippen oder einfach ins Mikrofon sprechen. Der Assistent wählt passende Aufgaben, Bilder und Rätsel aus und stellt daraus ein fertiges Arbeitsblatt zusammen. Alternativ kannst du auch dein eigenes Material hochladen, egal ob Text, PDF, Bild oder Audiodatei, und die KI baut daraus passende Aufgaben.</p>
+        <div class="wish">„<b>Wortarten üben, Klasse 3, Thema Ritter</b>" → Blatt fertig. Mit Lösungsblatt.</div>
       </div>
       <div class="cell c-2 reveal">
         <div class="ico" style="background:#FDF1EC"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
         <h3>Differenzierung auf Klick</h3>
-        <p>Ein Knopf macht aus deinem Blatt drei Niveaustufen. Für die schnelle Gruppe, die Mitte und die, die noch Anlauf brauchen.</p>
+        <p>Ein Knopf macht aus deinem Blatt drei Niveaustufen. Jede:r Schüler:in findet genau die Herausforderung und Unterstützung, die sie oder er gerade braucht.</p>
         <div class="stars">
           <div><b>★</b>leicht</div>
           <div><b>★★</b>mittel</div>
@@ -443,18 +443,18 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       </div>
       <div class="cell c-3 reveal">
         <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></div>
-        <h3>Über 300 Bausteine, 10 Fächer</h3>
-        <p>Rechenpäckchen, Zahlenmauern, Lückentexte, Schwungübungen, Steckbriefe, Kreuzworträtsel, Noten, Landkarten und mehr. Am tiefsten ausgebaut: Mathe und Deutsch.</p>
+        <h3>Über 150 Bausteine, 10 Fächer</h3>
+        <p>Rechenpäckchen, Zahlenmauern, Lückentexte, Schwungübungen, Steckbriefe, Kreuzworträtsel, Noten, Landkarten und mehr. Die größte Auswahl bieten Mathe und Deutsch.</p>
       </div>
       <div class="cell c-3 tint-teal reveal">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2.5"/><path d="M9 18h6"/></svg></div>
         <h3>Mitmach-Modus fürs Tablet</h3>
-        <p>Deine Klasse löst das Blatt direkt am Bildschirm. Die Schüler:innen kontrollieren sich selbst und bekommen bei richtiger Lösung Sterne und Konfetti. Ganz ohne extra App.</p>
+        <p>Deine Klasse löst das Blatt digital im Browser. Die Schüler:innen erhalten sofortiges Feedback: bei einer falschen Antwort einen Hinweis, bei der richtigen Lösung Sterne und Konfetti. Ganz ohne extra App.</p>
       </div>
       <div class="cell c-3 reveal">
         <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 10h8M12 16v3M8 21h8"/></svg></div>
         <h3>Whiteboard-Modus für den Unterricht</h3>
-        <p>Blatt an die Tafel, Klassen-Timer starten, Zufalls-Schüler:in ziehen, eine Aufgabe groß nach vorn holen, Lösungen Schritt für Schritt aufdecken.</p>
+        <p>Das Blatt an die Tafel projizieren, den Klassen-Timer starten, eine Zufalls-Schüler:in ziehen, eine Aufgabe groß nach vorn holen und die Lösungen Schritt für Schritt aufdecken.</p>
       </div>
       <div class="cell c-3 tint-green reveal">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B7A4A" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -470,7 +470,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       <div class="cell c-3 reveal">
         <div class="ico" style="background:#EAF7FB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg></div>
         <h3>Vorlesen und Audio</h3>
-        <p id="audioText">Die KI liest jede Aufgabe vor, mit wählbarer Stimme, und erzeugt sogar Geräusche fürs Hörverstehen. Beim gedruckten Blatt hören die Kinder das Audio über einen QR-Code.</p>
+        <p id="audioText">Die KI liest jede Aufgabe vor und erzeugt sogar Geräusche fürs Hörverstehen. Beim gedruckten Blatt hören die Schüler:innen das Audio über einen QR-Code.</p>
         <div class="wave">
           <button class="play" id="playBtn" type="button" aria-label="Diesen Text vorlesen lassen">
             <svg id="icoPlay" width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
@@ -498,7 +498,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       <div class="cell c-2 tint-teal reveal">
         <div class="ico" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A7E9C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/></svg></div>
         <h3>Lesehilfe eingebaut</h3>
-        <p>Silben zweifarbig, Leselineal und größere Schrift auf Knopfdruck. So kommen auch Kinder mit, die beim Lesen noch Anlauf brauchen.</p>
+        <p>Silben zweifarbig, Leselineal und größere Schrift auf Knopfdruck. So kommen auch Schüler:innen mit, die beim Lesen noch Anlauf brauchen.</p>
       </div>
     </div>
   </div>
@@ -523,8 +523,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
       </figure>
       <figure class="reveal">
         <div class="frame" aria-hidden="true"><span></span><span></span><span></span></div>
-        <img src="shot-14-tabletversion.png" alt="Die Tablet-Version: Kinder lösen das Blatt digital und bekommen sofort Rückmeldung" loading="lazy">
-        <figcaption>Mitmach-Modus am Tablet: sofortige Rückmeldung, Konfetti inklusive.</figcaption>
+        <img src="shot-editor-aufbau.jpg" alt="Der Editor mit einem mehrseitigen Mathe-Arbeitsblatt: Kopfbereich, nummerierte Aufgaben mit Punkten, Zahlenmauer, Zahlenstrahl und Sachaufgabe" loading="lazy">
+        <figcaption>Arbeitsblätter Baustein für Baustein aufbauen: mit Kopfbereich für Name, Klasse und Überschrift. Verschiedenste Aufgabentypen samt Erklärung oder Beispiel und automatischer Nummerierung. Punkte lassen sich definieren und automatisch auswerten, während sich Schriftart, Hintergrundbild und Differenzierung ganz nach Wunsch einstellen lassen.</figcaption>
       </figure>
     </div>
     <div class="cta-mid reveal">
@@ -538,7 +538,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   <div class="wrap">
     <div class="center reveal">
       <h2>Oder bau es selbst. Baustein für Baustein.</h2>
-      <p class="lede">Die KI macht den Anfang, du behältst die Kontrolle: ziehen, ablegen, neu würfeln, Bilder von der KI zeichnen lassen. Klick dich durch die Fächer:</p>
+      <p class="lede">Die KI macht den Anfang und du behältst die Kontrolle: Du ziehst Bausteine aufs Blatt, würfelst Aufgaben neu und lässt Bilder von der KI zeichnen. Klick dich durch die Fächer:</p>
     </div>
     <div class="tabs reveal" role="tablist">
       <button class="on" data-tab="0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg>Mathe</button>
@@ -560,9 +560,9 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
   <div class="wrap">
     <div class="center reveal"><h2>So einfach geht das</h2></div>
     <div class="steps">
-      <div class="step reveal"><span class="verb">Wunsch eingeben</span><p>Thema, Klassenstufe, Fach. Ein Satz reicht: „Lückentext zum Eichhörnchen für Klasse 3." Die KI baut daraus ein komplettes Blatt.</p></div>
-      <div class="step reveal"><span class="verb">Anpassen</span><p>Bausteine verschieben, neu würfeln, Bilder von der KI zeichnen lassen, in drei Stufen differenzieren. Alles per Klick, nichts zu installieren.</p></div>
-      <div class="step reveal"><span class="verb">Drucken oder teilen</span><p>Als Schülerblatt mit Lösungsblatt drucken. Oder direkt in den Mitmach-Modus fürs Tablet und den Beamer wechseln.</p></div>
+      <div class="step reveal"><span class="verb">Wunsch eingeben</span><p>Du gibst Thema, Klassenstufe und Fach ein. Ein Satz reicht: „Lückentext zum Wasserkreislauf für Klasse 3." Die KI baut daraus ein komplettes Blatt.</p></div>
+      <div class="step reveal"><span class="verb">Anpassen</span><p>Du verschiebst Bausteine, würfelst Aufgaben neu, lässt Bilder von der KI zeichnen und differenzierst alles in drei Stufen. Ganz per Klick und ohne Installation.</p></div>
+      <div class="step reveal"><span class="verb">Drucken oder teilen</span><p>Du druckst das Schülerblatt samt Lösungsblatt oder wechselst direkt in den Mitmach-Modus für das Tablet und den Beamer.</p></div>
     </div>
   </div>
 </section>
@@ -570,7 +570,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
 <section class="vs">
   <div class="wrap">
     <div class="center reveal">
-      <h2>Die KI-Alternative zu Worksheet Crafter</h2>
+      <h2>Die KI-Alternative zum Worksheet Crafter</h2>
     </div>
     <div class="reveal" style="overflow-x:auto">
     <table>
@@ -599,7 +599,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
     <div class="faq reveal">
       <details>
         <summary>Was ist der KI-Material-Baukasten?</summary>
-        <p>Ein digitaler Baukasten, mit dem du Arbeitsblätter für die Grundschule erstellst. Die KI baut dir aus einem Satz ein fertiges Blatt, das du mit über 300 Bausteinen frei anpassen kannst. Du musst nichts installieren, er öffnet sich einfach im Internet, wie diese Seite hier.</p>
+        <p>Ein digitaler Baukasten, mit dem du Arbeitsblätter für die Grundschule erstellst. Die KI baut dir aus einem Satz ein fertiges Blatt, das du mit über 150 Bausteinen frei anpassen kannst. Du musst nichts installieren, er öffnet sich einfach im Internet, wie diese Seite hier.</p>
       </details>
       <details>
         <summary>Für wen ist der Baukasten gedacht?</summary>
@@ -618,8 +618,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;background:#fff}
         <p>Ja. Die Daten liegen auf Servern in der EU, und deine Schüler:innen brauchen keine eigenen Konten.</p>
       </details>
       <details>
-        <summary>Ich arbeite mit Worksheet Crafter. Lohnt sich der Blick?</summary>
-        <p>Wenn du beim manuellen Gestalten bleiben willst, ist Worksheet Crafter weiter ein solides Werkzeug. Wenn dir die KI das Bauen abnehmen soll, dein Material in drei Stufen differenzieren und deine Klasse am Tablet mitmachen soll: Teste 14 Tage kostenlos parallel und vergleich selbst.</p>
+        <summary>Ich arbeite mit dem Worksheet Crafter. Lohnt sich der Blick?</summary>
+        <p>Der Worksheet Crafter ist eine bewährte Lösung. Beim KI Material-Baukasten gestaltest du genauso frei und flexibel selbst, Baustein für Baustein. Aber du hast zusätzlich die KI an deiner Seite: Sie erstellt Inhalte und Bilder zu jedem beliebigen Thema, differenziert mit einem Klick in drei echte Niveaus und baut aus deinem eigenen Material, ob Text, PDF oder Bild, passende Aufgaben. Teste 14 Tage kostenlos und vergleich selbst.</p>
       </details>
     </div>
   </div>
