@@ -44,8 +44,6 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-f
 .wk-card ol{margin:0 0 18px 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--ink-soft)}
 .wk-card ol b{color:var(--navy)}
 .wk-card .btn{width:100%;justify-content:center}
-.tool-hinweis{text-align:center;font-size:14.5px;color:var(--ink-soft);max-width:62ch;margin:0 auto 30px;padding:0 20px}
-.tool-hinweis strong{color:var(--teal-ink);font-weight:600}
 .tool-top{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:#FAFCFE;flex-wrap:wrap}
 .tt-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 13px;font:600 13.5px 'Outfit',sans-serif;color:var(--navy);cursor:pointer}
 .tt-btn:hover{border-color:var(--teal)}
@@ -182,14 +180,14 @@ footer{padding:28px 0;background:#fff}
         <ol>
           <li>Klick links einen <b>Baustein</b> an, er landet sofort auf deinem Blatt.</li>
           <li>Oder lass den <b>✦ KI-Assistenten</b> ein fertiges Blatt bauen.</li>
-          <li>Alles mit 🔒 ist hier gesperrt. <b>Im kostenlosen Test ist alles offen.</b></li>
+          <li>Das hier ist eine <b>Vorschau</b>: Funktionen mit 🔒 sind noch zu. Alles freischalten kannst du danach mit dem <b>kostenlosen 14-Tage-Test</b>.</li>
         </ol>
         <button class="btn" id="wkStart">Ausprobieren →</button>
       </div>
     </div>
     <div class="tool-top">
       <button class="tt-btn ki" id="btnKi">✦ KI-Assistent</button>
-      <span class="ki-credits" id="kiCredits" title="Kostenlose KI-Versuche im Schnuppermodus">3 KI-Versuche frei</span>
+      <span class="ki-credits" id="kiCredits" title="Kostenlose KI-Versuche in dieser Vorschau">3 KI-Versuche frei</span>
       <button class="tt-btn" id="btnSol"><span id="solLabel">Lösungen zeigen</span></button>
       <button class="tt-btn" id="btnLeer">Leeren</button>
       <span style="flex:1"></span>
@@ -238,10 +236,8 @@ footer{padding:28px 0;background:#fff}
   </div>
 </div>
 
-<p class="tool-hinweis">🔒 In dieser Demo sind ein paar Funktionen gesperrt. <strong>Im kostenlosen Test ist alles offen und unlimitiert.</strong></p>
-
 <section class="after-tool">
-  <p><b>Gefällt dir, was du siehst?</b> Im kostenlosen Test ist alles offen und unbegrenzt nutzbar: der volle KI-Assistent, über 150 Bausteine, KI-Bilder, Vorlesen, Drucken mit Lösungsblatt und der Tablet-Modus für deine Klasse.</p>
+  <p><b>Gefällt dir die Vorschau?</b> Dann starte den kostenlosen 14-Tage-Test: Dort nutzt du den ganzen Baukasten ohne Sperren, mit dem vollen KI-Assistenten, allen 150+ Bausteinen, KI-Bildern, Vorlesen, Drucken mit Lösungsblatt und dem Tablet-Modus für deine Klasse.</p>
   <a class="btn" href="https://kischulgenie.com/auth/sign-up">14 Tage kostenlos testen <span>→</span></a>
   <p class="cta-help">Ohne Verpflichtung und jederzeit kündbar.</p>
 </section>
@@ -338,7 +334,7 @@ const BLOECKE={
 
 function addBlock(art){
   if(sheet.querySelectorAll('.blk').length>=4){
-    sag('Im Schnuppermodus ist hier Schluss. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> baust du unbegrenzt, so viele Seiten du willst.');
+    sag('In der Vorschau ist hier Schluss. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen 14-Tage-Test</a> baust du so viele Seiten, wie du willst.');
     return;
   }
   leer.style.display='none';
@@ -357,7 +353,7 @@ function addBlock(art){
 
 document.querySelectorAll('[data-add]').forEach(btn=>btn.addEventListener('click',()=>addBlock(btn.dataset.add)));
 document.querySelectorAll('[data-lock]').forEach(el=>el.addEventListener('click',()=>{
-  sag(`🔒 ${el.dataset.lock} ist im Schnuppermodus gesperrt. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> ist alles offen und unbegrenzt nutzbar.`);
+  sag(`🔒 ${el.dataset.lock} ist in dieser Vorschau gesperrt. Freischalten: <a href="https://kischulgenie.com/auth/sign-up">kostenloser 14-Tage-Test</a>.`);
 }));
 
 let kiCredits=3;
@@ -368,7 +364,7 @@ function updCredits(){
 }
 document.getElementById('btnKi').addEventListener('click',()=>{
   if(kiCredits<=0){
-    sag('Deine 3 kostenlosen KI-Versuche sind aufgebraucht. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen Test</a> generierst du unbegrenzt weiter.');
+    sag('Deine 3 KI-Versuche in dieser Vorschau sind aufgebraucht. Im <a href="https://kischulgenie.com/auth/sign-up">kostenlosen 14-Tage-Test</a> generierst du unbegrenzt weiter.');
     return;
   }
   kiCredits--;updCredits();
